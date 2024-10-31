@@ -35,10 +35,7 @@ const editTask = asyncHandler(async (req, res) => {
     let _id = req.params.id
     const task = await Task.findById(_id);
     if (task) {
-        task.title = req.body.title || task.title;
         task.status = req.body.status || task.status;
-        task.description = req.body.description || task.description;
-
 
         const updatedTask = await task.save();
         res.json(updatedTask);
